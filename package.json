@@ -1,0 +1,14 @@
+{
+  "name": "Server",
+  "version": "1.0.0",
+  "description": "Server for some",
+  "main": "index.js",
+  "author": "Maks",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "fetch": "^1.1.0",
+    "hbs": "^4.1.0",
+    "request": "^2.88.0"
+  }
+}
