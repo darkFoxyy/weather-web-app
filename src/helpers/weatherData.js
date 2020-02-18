@@ -1,4 +1,5 @@
 const request = require('request')
+const {forengToCelc} = require('./temperature')
 
 const getWeather = (latitude, longitude, callback) => {
     const timestamp = Date.now().toString().slice(0, -3);
@@ -22,8 +23,10 @@ const getWeather = (latitude, longitude, callback) => {
             precipProbability: info.daily.data[0].precipProbability,
             precipType: info.daily.data[0].precipType
         }
+
+        weatherData.temperature = forengToCelc(weatherData.temperature)
         
-        const result = `\nWeather for today: \n${weatherData.summary}\nTemperature now is ${weatherData.temperature} F\nProbability of ${weatherData.precipType} is ${weatherData.precipProbability * 100}%\n`
+        const result = `\nWeather for today: \n${weatherData.summary}\nTemperature now is ${weatherData.temperature} C\nProbability of ${weatherData.precipType} is ${weatherData.precipProbability * 100}%\n`
         return callback(null, result)
     })
 }
